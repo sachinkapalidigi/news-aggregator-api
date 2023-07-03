@@ -111,4 +111,24 @@ const NYTArticleCategories = [
   "Your Money",
 ];
 
-module.exports = NYTArticleCategories;
+const NYTFieldsList = [
+  "abstract",
+  "web_url",
+  "snippet",
+  "lead_paragraph",
+  "print_page",
+  "source",
+  // "multimedia"
+  "headline",
+  "pub_date",
+  "document_type",
+  "news_desk",
+  "section_name",
+  "subsection_name",
+  "type_of_material",
+  "_id",
+  "word_count",
+  "uri",
+];
+
+module.exports = { NYTArticleCategories, NYTFieldsList };
