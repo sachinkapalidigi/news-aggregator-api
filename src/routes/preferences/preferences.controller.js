@@ -1,4 +1,6 @@
-const NYTArticleCategories = require("../../constants/NYTArticleCategories");
+const {
+  NYTArticleCategories,
+} = require("../../constants/NYTArticleCategories");
 const {
   getUserPreferences,
   updateUserPreferences,

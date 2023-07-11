@@ -3,6 +3,9 @@ const {
   NYTArticleCategories,
   NYTFieldsList,
 } = require("../constants/NYTArticleCategories");
+
+// DOT env for testing in the same file
+
 const { config } = require("dotenv");
 const path = require("path");
 

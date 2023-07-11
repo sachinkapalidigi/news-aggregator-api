@@ -1,5 +1,9 @@
 const { createUser, getUserByEmail } = require("../../models/users/user.model");
-const { hashPassword, generateToken } = require("../../utils/authUtil");
+const {
+  hashPassword,
+  generateToken,
+  verifyPassword,
+} = require("../../utils/authUtil");
 const {
   errorResponseWrapperSync,
 } = require("../../utils/errorResponseWrapper");
@@ -23,7 +27,7 @@ const httpCreateUser = errorResponseWrapperSync((req, res) => {
 const httpLoginUser = errorResponseWrapperSync((req, res) => {
   const { email, password } = req.body;
   const user = getUserByEmail(email);
-  if (user && user.password === hashPassword(password)) {
+  if (user && verifyPassword(password, user.password)) {
     return res.status(200).json({
       message: "User logged in",
       token: generateToken({

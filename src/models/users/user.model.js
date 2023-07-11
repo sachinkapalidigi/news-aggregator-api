@@ -1,6 +1,9 @@
 const uuid = require("uuid");
 const AppError = require("../../utils/appError");
 const { getArticle } = require("../news/news.model");
+const {
+  NYTArticleCategories,
+} = require("../../constants/NYTArticleCategories");
 
 const users = {}; // user id
 const emailUserId = {}; // Check if email is already registered
@@ -47,7 +50,9 @@ const updateUserPreferences = function (preferences, userId) {
   if (!users[userId]) throw new AppError("User not found", 404);
   if (
     !Array.isArray(preferences) ||
-    preferences.every((val) => typeof val === "string")
+    preferences.every(
+      (val) => typeof val !== "string" || !NYTArticleCategories.includes(val)
+    )
   )
     throw new AppError("Invalid user preferences", 400);
   users[userId].preferences = preferences;
